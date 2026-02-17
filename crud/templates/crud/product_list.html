@@ -1,0 +1,17 @@
+<h1>商品一覧</h1>
+
+<table border="1">
+  <tr>
+    <th>商品名</th>
+    <th>価格</th>
+    <th></th>
+  </tr>
+
+  {% for product in object_list %}
+  <tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }} 円</td>
+    <td><a href="{% url 'product_detail' product.pk %}">詳細</a></td>
+  </tr>
+  {% endfor %}
+</table>

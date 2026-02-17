@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>トップ</title>
+</head>
+<body>
+  <h1>トップ</h1>
+
+  <p>商品ページへ移動できます。</p>
+
+  <ul>
+    <!-- 商品一覧がある場合 -->
+    <li><a href="{% url 'product_list' %}">商品一覧へ</a></li>
+   
+    <li><a href="/crud/detail/1">商品詳細（ID=1）を開く</a></li>
+  </ul>
+</body>
+</html>

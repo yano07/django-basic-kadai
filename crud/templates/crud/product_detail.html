@@ -1,0 +1,14 @@
+<h1>商品詳細</h1>
+
+<table border="1">
+  <tr>
+    <th>商品名</th>
+    <th>価格</th>
+  </tr>
+  <tr>
+    <td>{{ object.name }}</td>
+    <td>{{ object.price }} 円</td>
+  </tr>
+</table>
+
+<p><a href="{% url 'product_list' %}">戻る</a></p>

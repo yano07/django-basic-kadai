@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block title %}新規作成{% endblock %}
+
+{% block content %}
+<!-- #第8章 新規作成フォームを作ろう -->
+
+<h1>新規作成</h1>
+
+<!-- 第12章 画像を扱えるようにしよう -->
+<!-- ★ enctype追加 -->
+<form method="post" enctype="multipart/form-data">
+<!-- ★ ここまで -->
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">登録</button>
+</form>
+{% endblock %}

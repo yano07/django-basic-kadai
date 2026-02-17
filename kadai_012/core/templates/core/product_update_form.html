@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>編集</h1>
+
+<!-- #第8章 新規作成フォームを作ろう -->
+<!-- ★ enctype追加 -->
+<form method="post" enctype="multipart/form-data">
+<!-- ★ ここまで -->
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <a href="{% url 'list' %}">戻る</a>
+  <button type="submit">更新</button>
+</form>
+{% endblock %}

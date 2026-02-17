@@ -1,0 +1,61 @@
+{% extends "core/base.html" %}
+
+{% block title %}商品一覧{% endblock %}
+
+{% block content %}
+<!-- 第6章 データ一覧を表示しよう -->
+
+<h1>商品一覧</h1>
+
+<!-- ✅ここに追加(#第8章 新規作成フォームを作ろう) -->
+<a href="{% url 'new' %}">新規作成</a>
+
+
+<table border="1">
+  <tr>
+    <th>商品名</th>
+    <th>価格</th>
+    <th>カテゴリ</th>   <!-- 第11章：データにリレーションを追加 -->
+    <th>画像</th>   <!-- 第12章 画像を扱えるようにしよう -->
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+
+  {% for product in object_list %}
+  <tr>
+    <td>
+      <a href="{% url 'detail' product.pk %}">{{ product.name }}</a>  <!-- ★第13章：詳細ページへリンク -->
+    </td>
+    <td>{{ product.price }}円</td>
+    <td>{{ product.category }}</td>    <!-- 第11章：データにリレーションを追加 -->
+
+    <td>
+      <img src="{{ product.img.url }}" width="80" height="80">    <!-- 第12章 画像を扱えるようにしよう -->
+    </td>
+
+    <td>
+      <!--  編集フォームを作ろう（Update）) -->
+      <a href="{% url 'edit' product.pk %}">編集</a>
+    </td>
+    <td>
+      <!--  削除フォームを作ろう（Delete）) -->
+      <a href="{% url 'delete' product.pk %}">削除</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<!--ページネーションを追加しよう  -->
+  <hr>
+  <div>
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">前へ</a>
+    {% endif %}
+
+    {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">次へ</a>
+    {% endif %}
+  </div>
+{% endblock %}

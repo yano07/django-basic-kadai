@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+
+{% block title %}商品詳細{% endblock %}
+
+{% block content %}
+<!-- ★第13章：商品詳細ページ（商品説明 + カテゴリ + 商品画像） -->
+
+<h1>商品詳細</h1>
+
+<table border="1">
+  <tr>
+    <th>商品名</th>
+    <td>{{ object.name }}</td>
+  </tr>
+  <tr>
+    <th>価格</th>
+    <td>{{ object.price }}円</td>
+  </tr>
+  <tr>
+    <th>カテゴリ</th>
+    <td>{{ object.category }}</td>
+  </tr>
+  <tr>
+    <th>商品画像</th>
+    <td>
+      {% if object.img %}
+        <img src="{{ object.img.url }}" width="200" alt="商品画像">
+      {% else %}
+        なし
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>商品説明</th>
+    <td style="white-space: pre-wrap;">{{ object.description }}</td>
+  </tr>
+</table>
+
+<hr>
+
+<a href="{% url 'list' %}">一覧へ戻る</a>
+
+{% endblock %}
